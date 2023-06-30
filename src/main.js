@@ -37,10 +37,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     //Src 
-    rockImg.src = 'img/rock.png';
-    paperImg.src = 'img/paper.png';
-    scissorImg.src = 'img/scissor.png';
-    compFace.src = 'img/cat/angel.png';
+    rockImg.src = 'src/img/rock.png';
+    paperImg.src = 'src/img/paper.png';
+    scissorImg.src = 'src/img/scissor.png';
+    compFace.src = 'src/img/cat/angel.png';
     
 
 
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-    pTitle.classList.add('box-border','w-full','place-self-center','text-2xl','lg;text-5xl');
+    pTitle.classList.add('box-border','text-2xl','lg;text-5xl');
     
     
     myDisplay.classList.add('grid','grid-cols-2','col-span-2','order-3','lg:order-1');
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let playerSelection = event.target.innerText;
         
 
-        choiceImg.src = `img/${playerSelection}.png`;
+        choiceImg.src = `src/img/${playerSelection}.png`;
         hideBtn();
         showImg();
         
@@ -183,16 +183,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.log(myRound);
                 console.log(compRound);
                 if(myRound === 5){
-                    compFace.src = 'img/cat/tears.png';
+                    compFace.src = 'src/img/cat/tears.png';
                     scores.textContent = `You got ${myRound} wins! Good Job!`;
                   } else {
-                    compFace.src = 'img/cat/smile.png';
+                    compFace.src = 'src/img/cat/smile.png';
                     scores.textContent = `Computer got ${compRound} wins!`;
                    }
             }
         } else {
             setTimeout(() => {
-                compFace.src = 'img/cat/angel.png';
+                compFace.src = 'src/img/cat/angel.png';
             },2000);
         }
 
@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function playRound(me, comp) {
         myChoice = me;
         compChoice = comp;
-        randImg.src = `img/cat/${compChoice}.png`;
+        randImg.src = `src/img/cat/${compChoice}.png`;
         winSentence = `i got ${myRound} wins because i win`;
         loseSentence = `comp got ${myRound} wins because i lose`;
         if(myChoice === comp) return console.log('draw');
@@ -211,30 +211,30 @@ document.addEventListener("DOMContentLoaded", function() {
             case 'rock':
                 if(compChoice === 'scissor') {
                     myRound++;
-                    compFace.src = 'img/cat/tears.png';
+                    compFace.src = 'src/img/cat/tears.png';
                 } else {
                     compRound++;
-                    compFace.src = 'img/cat/smile.png';
+                    compFace.src = 'src/img/cat/smile.png';
                 }
                 letsPlay();
                 break;
             case 'paper':
                 if(compChoice === 'rock') {
                     myRound++;
-                    compFace.src = 'img/cat/tears.png';
+                    compFace.src = 'src/img/cat/tears.png';
                 } else {
                     compRound++;
-                    compFace.src = 'img/cat/smile.png';
+                    compFace.src = 'sr/cimg/cat/smile.png';
                 }
                 letsPlay();
                 break;
             case 'scissor':
                 if(compChoice === 'paper') {
                     myRound++;
-                    compFace.src = 'img/cat/tears.png';
+                    compFace.src = 'src/img/cat/tears.png';
                 } else {
                     compRound++;
-                    compFace.src = 'img/cat/smile.png';
+                    compFace.src = 'src/img/cat/smile.png';
                 }
                 letsPlay();
                 break;
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
         const minus = setInterval(function (){
-            pTitle.textContent = `Clash of ${choice.slice(0,i) + newChoice.slice(i,newChoice.length)} Hands`;
+            pTitle.textContent = tilt + choice.slice(0,i) + newChoice.slice(i,newChoice.length);
             
             if(i === 0) {
                 clearInterval(minus);
@@ -280,15 +280,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function titleAdd() {
         checkIf();
-        let tilt = 'Clash of';
-        let end = 'Hands';
+        let tilt = 'Clash of Hands ';
         let choice = choices[choicesIndex];
         let newChoice = choices[newIndex];
         let i = 0;
 
 
         const add = setInterval(function() {
-            pTitle.textContent = `Clash of ${newChoice.slice(0,i) + choice.slice(i,choice.length)} Hands`;
+            pTitle.textContent = tilt + newChoice.slice(0,i) + choice.slice(i,choice.length);
             if(i === newChoice.length) {
                 clearInterval(add);
                 newIndex++;
