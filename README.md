@@ -1,4 +1,4 @@
-# RockPaperScissors
+# Clash of Hands
 
 
-https://markvayson.github.io/RockPaperScissors/
+https://markvayson.github.io/clashOfHands/
