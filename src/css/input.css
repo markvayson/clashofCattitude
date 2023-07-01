@@ -2,3 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+html, body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.menu {
+  height: 92%;
+  width: 92%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
