@@ -11,8 +11,7 @@ Welcome to Clash of Catitude, a thrilling online game where you can battle again
 - Compete against friends or challenge the computer-controlled cat opponent for hours of gaming fun.
 
 ## Getting Started
-1. Clone the repository to your local machine.
-2. Open the game in your preferred web browser.
+2. Open the [game](https://markvayson.github.io/clashOfHands) in your preferred web browser.
 3. Select your move (rock, paper, or scissors) by clicking on the corresponding button.
 4. Watch the exciting battle unfold and see if you can defeat the cunning cat.
 5. Keep playing, improve your strategies, and strive for victory!
@@ -23,7 +22,5 @@ Welcome to Clash of Catitude, a thrilling online game where you can battle again
 ## Contributions
 Contributions to Clash of Catitude are welcome! If you have ideas for new features, improvements, or bug fixes, feel free to submit a pull request.
 
-## License
-This project is licensed under the [MIT License](LICENSE).
 
 Enjoy the game and have a purr-fectly amazing time battling against the feline foe on the virtual RPS battlefield!
