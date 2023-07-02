@@ -147,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function() {
         menu.classList.remove("hidden");
         // menu.classList.add("rounded-3xl","drop-shadow-2xl","bg-gray-100","flex","flex-col", "absolute" ,"menu", "justify-center" ,"items-center");
         burger.classList.add("hidden");
+        play.innerHTML = 'Play';
     });
     
     //CREATE 
