@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const choices = ['rock', 'paper', 'scissor'];
+    let isPlaying = false;
     
     const npcStartingWords = [
         "Prepare yourself, human. Whiskerclaw is here to test your skills!",
@@ -8,6 +9,27 @@ document.addEventListener("DOMContentLoaded", function() {
         "Your feeble attempts won't be enough to defeat me, hooman. Let's see what you've got!",
         "Ah, another challenger. The Clash of Catitude begins now!"
     ];
+
+    const playerPhrases = [
+        "Whiskerclaw, we may be evenly matched, but I won't back down. Prepare for our next encounter!",
+        "A draw, Whiskerclaw. Our battles are always intense. I look forward to our next clash of wits!",
+        "No winner this time, Whiskerclaw. Our rivalry grows stronger with each round. Until we meet again!",
+        "Well fought, Whiskerclaw. Neither of us could claim victory, but our rivalry continues to fuel my determination.",
+        "Whiskerclaw, the battle ended in a draw, but our rivalry is far from over. Prepare yourself for the next round!"
+      ];
+      
+      const randomPlayerPhrase = playerPhrases[Math.floor(Math.random() * playerPhrases.length)];
+
+
+    const whiskerclawPhrases = [
+        "A draw? Don't get too confident, human. I'll get you next time.",
+        "A stalemate, but I won't settle for it. Prepare for your ultimate defeat!",
+        "Impressive, but luck won't save you forever. I'll have my revenge soon.",
+        "We're evenly matched, for now. But mark my words, I'll triumph in the end.",
+        "A draw? This battle is far from over. I'll keep honing my claws for our next encounter."
+      ];
+      const randomWhiskerclawPhrase = whiskerclawPhrases[Math.floor(Math.random() * whiskerclawPhrases.length)];
+
 
     const userStartingWords = [
         "Prepare yourself, Whiskerclaw! I'm ready to take you on!",
@@ -126,17 +148,20 @@ document.addEventListener("DOMContentLoaded", function() {
     const disPlay = document.getElementById('disPlay');
     const compDisplay = document.getElementById('compDisplay');
     const npcPhrase = document.getElementById('npcPhrase');
-    const userPhrase = document.getElementById('userPhrase');
 
     //new
     const menu = document.getElementById('menu');  
     const logo = document.getElementById('logo');
-    const userChoices = document.getElementById('userChoices');
     const play = document.getElementById('play');
     play.innerHTML = 'Play';
     
     const npcLife = document.getElementById('npcLife');
+
+    //user
     const userLife = document.getElementById('userLife');
+    const userChoice = document.getElementById('userChoice');
+
+
 
     const rockBtn = document.getElementById('rockBtn');
     const paperBtn = document.getElementById('paperBtn');
@@ -144,11 +169,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const burger = document.getElementById('burger');
     burger.addEventListener('click', function() {
+        console.log(!isPlaying);
+        if(isPlaying){
+            play.innerHTML = 'Resume';
+            burger.innerHTML = 'X';
+        } else {
+            burger.classList.add("hidden");
+            play.innerHTML = 'Play';
+
+        }
+        
         menu.classList.remove("hidden");
-        // menu.classList.add("rounded-3xl","drop-shadow-2xl","bg-gray-100","flex","flex-col", "absolute" ,"menu", "justify-center" ,"items-center");
-        burger.classList.add("hidden");
-        play.innerHTML = 'Play';
     });
+
+    function resume() {
+        burger.innerHTML = '&#9776';
+        letsplay();
+    }
     
     //CREATE 
     const myDisplay = document.createElement('div');
@@ -163,9 +200,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const choiceImg = document.createElement('img');
     const compFace = document.createElement('img');
     const npcLifeText = document.createElement('p');
-    const npcPhraseText = document.createElement('p');
-    const userLifeText = document.createElement('p');
-    const userPhraseText = document.createElement('p');
 
 
     //Src 
@@ -194,40 +228,55 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     npcLifeText.classList.add('text-2xl','text-red-500');
-    npcPhraseText.classList.add('text-lg','text-left','p-2', 'bg-gray-100','h-min', 'rounded-lg','drop-shadow-md');
-    userLifeText.classList.add('text-2xl','text-red-500');
-    userPhraseText.classList.add('text-lg','text-left','p-2', 'bg-gray-100','h-min', 'rounded-lg','drop-shadow-md');
     
-
-
-
     npcLife.appendChild(npcLifeText);
-    userLife.appendChild(userLifeText);
 
-    pTitle.classList.add('box-border','text-2xl','lg;text-5xl');
+    //npc
+    
+    //npc.get
+    const npc = document.getElementById('npc');
+    const npcID = document.getElementById('npcID');
+    const npcICON = document.getElementById('npcICON');
+    const npcPhraseText = document.getElementById('npcPhraseText');
+    const npcCred = document.getElementById('npcCred');
+
+    //npc.create
+    const npcIMG = document.createElement('img');
+
+    //npc.class
+    npc.style.backgroundImage = 'url("src/img/battlefield.png")';
+    npcIMG.src = "src/img/cat/whiskerclaw.png"
+    npcIMG.classList.add('w-1/3','h-2/3');
+    npcPhrase.classList.add('bg-gray-100');
+    
+
+    //npc.append
+    npcICON.appendChild(npcIMG);
+    
+
+
+
+
+
+    //user
+
+    //user.get
+    const userID = document.getElementById('userID');
+    const userBTNS = document.getElementById('userBTNS');
+    const userPhrase = document.getElementById('userPhrase');
+    //user.create
+
+    //user.class
+    
+
+    //user.append
+
     
     
-    myDisplay.classList.add('grid','grid-cols-2','col-span-2','order-3','lg:order-1');
-    myDisplay.id = 'myDisplay';
 
 
     
-    scores.classList.add('place-self-center');
 
-    compFace.classList.add('max-w-full' , 'max-h-full');
-    randImg.classList.add('max-w-full','max-h-full');
-    // inputName.classList.add('placeholder:text-center','text-3xl','p-0','border-0','outline-0','rounded-full', 'box-border');
-    // inputName.type = 'text';
-    // inputName.placeholder = 'Enter name to play';
-
-
-    //APPEND
-    npcPhrase.appendChild(npcPhraseText);
-    userPhrase.appendChild(userPhraseText);
-
-
-
-    // verSus.appendChild(inputName);
 
 
     //EVENT LISTENERS
@@ -260,32 +309,51 @@ document.addEventListener("DOMContentLoaded", function() {
     
     function handleBtnClick(event) {
         let computerSelection = getComputerChoice();
-        let playerSelection = event.target.alt;
-        npcPhrase.appendChild(npcPhraseText);
-        userPhrase.appendChild(userPhraseText);
+        let alt = event.target.alt
+        let div = event.target.textContent
+        let playerSelection = alt ? alt : div.toLowerCase();
 
-        npcPhraseText.innerHTML = `I choose <strong> ${computerSelection} </strong>.<br>`;
-        userPhraseText.innerHTML = `I choose <strong> ${playerSelection} </strong>.<br>`;
-        
+        npcChoice.innerHTML = `picks <strong>${computerSelection}</strong>.`;
+        userChoice.innerHTML = `picks <strong>${playerSelection}</strong>.`;
+        userID.classList.add("bg-gray-200",'rounded-lg','shadow-sm');
 
-        choiceImg.src = `src/img/${playerSelection}.png`;
+        npcPhrase.classList.add('bg-gray-100');
+        npcID.classList.add('bg-gray-200');
+
         hideBtn();
         showImg();
         
         setTimeout(() => {
             showBtn();
             hideImg();
-            // userPhrase.removeChild(userPhraseText);
-            // npcPhrase.removeChild(npcPhraseText);
+            userChoice.innerHTML = '';
+            userID.classList.remove("bg-gray-200",'rounded-lg','shadow-sm');
+            npcChoice.innerHTML = '';
+            npcID.classList.remove('bg-gray-200');
             
         }, 2000)
         playRound(playerSelection,computerSelection);
     }
 
+    function darkBody () {
+        if(!menu.classList.contains('hidden')) {
+            let body = document.body;
+            body.style.backgroundColor = 'red';
+        }
+    }
+
+    darkBody();
     function startIt() {
+        isPlaying = true;
         menu.classList.add("hidden");
         burger.classList.remove("hidden");
         randomStartingWords();
+        if(play.innerHTML === 'Play'){
+            compRound = 5;
+            myRound = 5;
+
+        }
+        burger.innerHTML = '&#9776';
         letsPlay();
     }
 
@@ -293,9 +361,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const npcRandomIndex = Math.floor(Math.random() * npcStartingWords.length);
         const npcChoice = npcStartingWords[npcRandomIndex];
         const userRandomIndex = Math.floor(Math.random() * userStartingWords.length);
-        const userChoice = userStartingWords[userRandomIndex];
-        npcPhraseText.textContent = npcChoice;
-        userPhraseText.textContent = userChoice;
+        const userGetChoice = userStartingWords[userRandomIndex];
+        npcPhraseText.innerHTML = npcChoice;
+        userPhrase.innerHTML = userGetChoice;
 
     }
 
@@ -309,7 +377,6 @@ document.addEventListener("DOMContentLoaded", function() {
     function newRound() {
         myRound = 0;
         compRound = 0;
-        verSus.removeChild(tryAgainBtn);
         letsPlay();
     }
 
@@ -330,16 +397,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
         };
         npcLifeText.textContent = npcLifeLeft;
-        userLifeText.textContent = userLifeLeft;
+        userLife.innerHTML = userLifeLeft;
         
         addPlayBtn();
         if(myRound === 0 || compRound === 0){
             if(myRound === 0){
-                console.log(`i lose`);
                 play.innerHTML = "Give up?";
             }
             if(compRound === 0){
-                console.log(`i win`);
                 play.innerHTML = "Rematch?";
             }
 
@@ -361,35 +426,35 @@ document.addEventListener("DOMContentLoaded", function() {
         const npcWordSelected = npcWords[wordIndex];
         const userWordSelected = userWords[wordIndex];
 
+        userPhrase.innerHTML = userWordSelected;
+        npcPhraseText.innerHTML = npcWordSelected;
 
-        const pickNow = `${userWordSelected} <br> (choose again)`;
-
-        npcPhraseText.innerHTML += npcWordSelected;
-        userPhraseText.innerHTML += pickNow;
+        
+        
     }
     function userWords() {
         let roundIndex = userWins - 1;
         let userWords = userWinning[roundIndex];
         let npcWords = npcLosing[roundIndex];
+
+
         
         const wordIndex = Math.floor(Math.random() * userWords.length);
         const userWordSelected = userWords[wordIndex];
         const npcWordSelected = npcWords[wordIndex];
 
-        const pickNow = `${userWordSelected} <br> (choose again)`;
+        userPhrase.innerHTML = userWordSelected;
+        npcPhraseText.innerHTML = npcWordSelected;
 
-        npcPhraseText.innerHTML += npcWordSelected;
-        userPhraseText.innerHTML += pickNow;
 
     }
+
+
     function playRound(me, comp) {
         myChoice = me;
         compChoice = comp;
         if(myChoice === comp) {
-            let x = `I choose <strong> ${myChoice} </strong>. <br> Again!`;
-            let y = `I choose <strong> ${compChoice} </strong>. <br> Again!`;
-            userPhraseText.innerHTML = x;
-            npcPhraseText.innerHTML = y;
+            let i = 0;
             return ;
 
         }
@@ -433,77 +498,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 break;
 
         }
+
     }
 
     
-    function checkIf() {
-        if (choicesIndex >= choices.length) {
-            choicesIndex = 0;
-        }
-
-        if (choicesIndex === 2 ) {
-            newIndex = 0;
-        }
-    }
 
 
-    function titleMinus() {  
-        checkIf();
-        
-        let tilt = 'Clash of Hands ';
-        let choice = choices[choicesIndex];
-        let newChoice = choices[newIndex];
-        let i = choice.length;
-
-
-
-        const minus = setInterval(function (){
-            pTitle.textContent = tilt + choice.slice(0,i) + newChoice.slice(i,newChoice.length);
-            
-            if(i === 0) {
-                clearInterval(minus);
-                newIndex++;
-                choicesIndex++;
-                playTitle(1);
-            }
-            i--;
-        }, 160)
-    }
-
-
-    function titleAdd() {
-        checkIf();
-        let tilt = 'Clash of Hands ';
-        let choice = choices[choicesIndex];
-        let newChoice = choices[newIndex];
-        let i = 0;
-
-
-        const add = setInterval(function() {
-            pTitle.textContent = tilt + newChoice.slice(0,i) + choice.slice(i,choice.length);
-            if(i === newChoice.length) {
-                clearInterval(add);
-                newIndex++;
-                choicesIndex++;
-                playTitle(0);
-            }
-            i++;
-        }, 160)
-}
+    
 
     
         
 
-    function playTitle(e) {
-        
-        if( e === 0) {
-            setTimeout(titleMinus(), 2000)
-        }
-        if( e === 1) {
-            setTimeout(titleAdd(), 2000)
-        }
-    }
     
-    randomStartingWords();
-        letsPlay();
 });
