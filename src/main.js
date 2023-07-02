@@ -132,6 +132,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const menu = document.getElementById('menu');  
     const logo = document.getElementById('logo');
     const userChoices = document.getElementById('userChoices');
+    const play = document.getElementById('play');
+    play.innerHTML = 'Play';
     
     const npcLife = document.getElementById('npcLife');
     const userLife = document.getElementById('userLife');
@@ -144,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function() {
     burger.addEventListener('click', function() {
         menu.classList.remove("hidden");
         // menu.classList.add("rounded-3xl","drop-shadow-2xl","bg-gray-100","flex","flex-col", "absolute" ,"menu", "justify-center" ,"items-center");
-
+        burger.classList.add("hidden");
     });
     
     //CREATE 
@@ -153,7 +155,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const scores = document.createElement('p');
     const tryAgainBtn = document.createElement('button');
     // const inputName = document.createElement('input');
-    const play = document.createElement('div');
     const rockImg = document.createElement('img');
     const paperImg = document.createElement('img');
     const scissorImg = document.createElement('img');
@@ -208,8 +209,6 @@ document.addEventListener("DOMContentLoaded", function() {
     myDisplay.classList.add('grid','grid-cols-2','col-span-2','order-3','lg:order-1');
     myDisplay.id = 'myDisplay';
 
-    play.id = 'play';
-    play.classList.add('flex','h-full', 'place-items-center');
 
     
     scores.classList.add('place-self-center');
@@ -235,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function() {
     rockBtn.addEventListener('click', handleBtnClick);    
     paperBtn.addEventListener('click', handleBtnClick);
     scissorBtn.addEventListener('click', handleBtnClick);
-    menu.addEventListener('click', startIt);
+    play.addEventListener('click', startIt);
     tryAgainBtn.addEventListener('click', newRound);
     
     function hideImg(){
@@ -265,8 +264,8 @@ document.addEventListener("DOMContentLoaded", function() {
         npcPhrase.appendChild(npcPhraseText);
         userPhrase.appendChild(userPhraseText);
 
-        npcPhraseText.innerHTML = `I choose <strong> ${computerSelection} </strong>.`;
-        userPhraseText.innerHTML = `I choose <strong> ${playerSelection} </strong>.`;
+        npcPhraseText.innerHTML = `I choose <strong> ${computerSelection} </strong>.<br>`;
+        userPhraseText.innerHTML = `I choose <strong> ${playerSelection} </strong>.<br>`;
         
 
         choiceImg.src = `src/img/${playerSelection}.png`;
@@ -276,14 +275,16 @@ document.addEventListener("DOMContentLoaded", function() {
         setTimeout(() => {
             showBtn();
             hideImg();
-            userPhrase.removeChild(userPhraseText);
-            npcPhrase.removeChild(npcPhraseText);
+            // userPhrase.removeChild(userPhraseText);
+            // npcPhrase.removeChild(npcPhraseText);
             
         }, 2000)
         playRound(playerSelection,computerSelection);
     }
 
     function startIt() {
+        menu.classList.add("hidden");
+        burger.classList.remove("hidden");
         randomStartingWords();
         letsPlay();
     }
@@ -318,8 +319,6 @@ document.addEventListener("DOMContentLoaded", function() {
         scissorBtn.appendChild(scissorImg);
     }
     function letsPlay() {
-        menu.textContent = '';
-        menu.classList.add('order-2');
         let npcLifeLeft = '';
         let userLifeLeft = '';
         for(let i = 0; i < compRound; i++) {
@@ -334,22 +333,20 @@ document.addEventListener("DOMContentLoaded", function() {
         userLifeText.textContent = userLifeLeft;
         
         addPlayBtn();
-        if(myRound >= 0 || compRound >= 0){
-            while(play.firstChild) {
-                play.removeChild(play.firstChild);
-                tryAgainBtn.textContent = 'Try Again?';
-                if(myRound === 0){
-                    compFace.src = 'src/img/cat/tears.png';
-                    scores.textContent = `You got ${myRound} wins! Good Job!`;
-                  } else {
-                    compFace.src = 'src/img/cat/smile.png';
-                    scores.textContent = `Computer got ${compRound} wins!`;
-                   }
+        if(myRound === 0 || compRound === 0){
+            if(myRound === 0){
+                console.log(`i lose`);
+                play.innerHTML = "Give up?";
             }
-        } else {
-            setTimeout(() => {
-                compFace.src = 'src/img/cat/angel.png';
-            },2000);
+            if(compRound === 0){
+                console.log(`i win`);
+                play.innerHTML = "Rematch?";
+            }
+
+            setTimeout(() =>{
+
+            menu.classList.remove('hidden');
+            },2000)
         }
 
     }
@@ -365,8 +362,10 @@ document.addEventListener("DOMContentLoaded", function() {
         const userWordSelected = userWords[wordIndex];
 
 
-        npcPhraseText.textContent = npcWordSelected;
-        userPhraseText.textContent = userWordSelected;
+        const pickNow = `${userWordSelected} <br> (choose again)`;
+
+        npcPhraseText.innerHTML += npcWordSelected;
+        userPhraseText.innerHTML += pickNow;
     }
     function userWords() {
         let roundIndex = userWins - 1;
@@ -377,14 +376,23 @@ document.addEventListener("DOMContentLoaded", function() {
         const userWordSelected = userWords[wordIndex];
         const npcWordSelected = npcWords[wordIndex];
 
-        userPhraseText.textContent = userWordSelected;
-        npcPhraseText.textContent = npcWordSelected;
+        const pickNow = `${userWordSelected} <br> (choose again)`;
+
+        npcPhraseText.innerHTML += npcWordSelected;
+        userPhraseText.innerHTML += pickNow;
 
     }
     function playRound(me, comp) {
         myChoice = me;
         compChoice = comp;
-        if(myChoice === comp) return console.log('draw');
+        if(myChoice === comp) {
+            let x = `I choose <strong> ${myChoice} </strong>. <br> Again!`;
+            let y = `I choose <strong> ${compChoice} </strong>. <br> Again!`;
+            userPhraseText.innerHTML = x;
+            npcPhraseText.innerHTML = y;
+            return ;
+
+        }
         switch(myChoice){
             case 'rock':
                 if(compChoice === 'paper') {
