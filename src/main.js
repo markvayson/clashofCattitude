@@ -222,7 +222,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     //APPEND
-    logo.appendChild(pTitle);
     npcPhrase.appendChild(npcPhraseText);
     userPhrase.appendChild(userPhraseText);
 
