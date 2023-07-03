@@ -54,24 +54,18 @@ const npcWinning = [[
     "Hiss and growl! You've fallen short of victory. I am the true conqueror of the battlefield!"]
 ];
 
-const npcLosing = [[
-    "You think you stand a chance against me? Prepare to be crushed, puny human!",
-"I am Whiskerclaw, the unbeatable feline master! Tremble before my claws!",
-"Your feeble attempts to defeat me are laughable! I am the true champion of this game!"],[
-    "Did you really think you could outsmart me? I am Whiskerclaw, the ultimate gaming genius!",
-"Your defeat is imminent, as I am the superior adversary! Behold the might of Whiskerclaw!",
-"Pathetic human, you cannot comprehend the level of skill possessed by Whiskerclaw!"
-],["My victories over you are a testament to my superior strategy and intellect. Bow down to Whiskerclaw!",
-"You're no match for my cunning, human! Accept your defeat at the paws of Whiskerclaw!",
-"Whiskerclaw always prevails! Your defeat is merely another step in my path to glory!"
+const npcLosing = [    
+    [  "You got lucky this time, but I'll be back stronger!",    "Don't celebrate too soon, I'm just warming up!",    "I underestimated you, but it won't happen again!"  ],
+  
+  [    "That was a close call, but the next round is mine!",    "You're good, but I'm still the king of this battlefield!",    "I'll show you true feline power in the next round!"  ],
+  
+  [    "You may have won this round, but I won't go down easily!",    "Impressive! But I won't let you defeat me again!",    "Consider this a temporary setback. I'll come back even stronger!"  ],
+  
+  [    "You're proving to be a worthy opponent, but I won't back down!",    "This is just a minor setback. The real battle starts now!",    "I'll make sure this loss motivates me to dominate the next round!"  ],
+  
+  [    "You may have won the battle, but the war isn't over yet!",    "I'll admit defeat this time, but I'll be back for a rematch!",    "Congratulations on your victory, but remember, I'm always up for a challenge!"  ]
+];
 
-],["Your futile attempts to defeat me are amusing, but ultimately useless. Whiskerclaw remains supreme!",
-"The more you struggle, the deeper you fall into the clutches of Whiskerclaw's unbeatable prowess!",
-"Your defeat is inevitable, for I am Whiskerclaw, the indomitable champion of this game!"],
-["Witness the culmination of your failures, human! Whiskerclaw's victory is absolute and undeniable!",
-"You are but a pawn in Whiskerclaw's game, destined to be defeated by my superior skills!",
-"As the final round approaches, know that your defeat is inevitable. Prepare to be forever humbled by Whiskerclaw!"
-]];
 
 const userWinning = [[
     "Whiskerclaw, I've only just begun! Prepare for a taste of true defeat!",
