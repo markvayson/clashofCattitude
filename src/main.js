@@ -221,15 +221,10 @@ document.addEventListener("DOMContentLoaded", function() {
     choiceImg.id = 'blackImg';
 
 
-    rockImg.classList.add();
-    paperImg.classList.add();
-    scissorImg.classList.add();
 
 
 
-    npcLifeText.classList.add('text-2xl','text-red-500');
     
-    npcLife.appendChild(npcLifeText);
 
     //npc
     
@@ -252,6 +247,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //npc.append
     npcICON.appendChild(npcIMG);
+    npcLife.appendChild(npcLifeText);
     
 
 
@@ -335,12 +331,6 @@ document.addEventListener("DOMContentLoaded", function() {
         playRound(playerSelection,computerSelection);
     }
 
-    function darkBody () {
-        if(!menu.classList.contains('hidden')) {
-            let body = document.body;
-            body.style.backgroundColor = 'red';
-        }
-    }
 
     darkBody();
     function startIt() {
