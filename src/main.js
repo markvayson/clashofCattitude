@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "Ah, another challenger. The Clash of Catitude begins now!"
     ];
 
-    const playerPhrases = [
+    const userDrawPhrase = [
         "Whiskerclaw, we may be evenly matched, but I won't back down. Prepare for our next encounter!",
         "A draw, Whiskerclaw. Our battles are always intense. I look forward to our next clash of wits!",
         "No winner this time, Whiskerclaw. Our rivalry grows stronger with each round. Until we meet again!",
@@ -18,19 +18,16 @@ document.addEventListener("DOMContentLoaded", function() {
         "Whiskerclaw, the battle ended in a draw, but our rivalry is far from over. Prepare yourself for the next round!"
       ];
       
-      const randomPlayerPhrase = playerPhrases[Math.floor(Math.random() * playerPhrases.length)];
+      
 
-
-    const whiskerclawPhrases = [
+    const npcDrawPhrase = [
         "A draw? Don't get too confident, human. I'll get you next time.",
         "A stalemate, but I won't settle for it. Prepare for your ultimate defeat!",
         "Impressive, but luck won't save you forever. I'll have my revenge soon.",
         "We're evenly matched, for now. But mark my words, I'll triumph in the end.",
         "A draw? This battle is far from over. I'll keep honing my claws for our next encounter."
       ];
-      const randomWhiskerclawPhrase = whiskerclawPhrases[Math.floor(Math.random() * whiskerclawPhrases.length)];
-
-
+      
     const userStartingWords = [
         "Prepare yourself, Whiskerclaw! I'm ready to take you on!",
     "Whiskerclaw, your reign ends here! Let's see who triumphs!",
@@ -102,28 +99,13 @@ document.addEventListener("DOMContentLoaded", function() {
         "As the rounds pass, Whiskerclaw, your defeat is etched into history. Tremble before the victor!"
     ]];
 
-    const userLosing = [[
-    "Whiskerclaw, you got lucky this time! But mark my words, I'll come back stronger!",
-    "A temporary setback, Whiskerclaw! I won't let this defeat dampen my spirit!",
-    "Well played, Whiskerclaw, but don't get too comfortable. I'll be back for vengeance!"
-
-    ],["Whiskerclaw, you may have won this round, but the battle is far from over. I'm just getting started!",
-    "Impressive, Whiskerclaw, but I won't let this defeat define me. I'll bounce back with even greater determination!",
-    "This defeat fuels my fire, Whiskerclaw! Prepare to face the consequences in the upcoming rounds!"
-
-    ],["Whiskerclaw, you may be ahead for now, but I refuse to accept defeat. I'll turn the tables soon enough!",
-    "I won't let this setback break me, Whiskerclaw! I'll rise from this defeat and prove my resilience!",
-    "Whiskerclaw, enjoy your temporary victory. But remember, I'm not one to stay down for long!"],[
-
-    ],["Whiskerclaw, your wins won't deter me. I'll learn from this defeat and come back stronger than ever!",
-    "This defeat only fuels my determination, Whiskerclaw. Get ready for a fierce comeback in the upcoming rounds!",
-    "I refuse to be discouraged, Whiskerclaw! You may have won this round, but I won't let it break my spirit!"],[
-
-    ],["Whiskerclaw, you may have the upper hand for now, but the game isn't over. I'll use this defeat as motivation for future victories!",
-    "The final round didn't go in my favor, Whiskerclaw, but I won't let it overshadow the progress I've made throughout the game!",
-    "Whiskerclaw, your victory in the last round won't stop me from striving for greatness. I'll return with renewed determination!"
-    ]];
-
+    const userLosing = [
+        ["Better luck next time!", "Oops! Whiskerclaw got the best of me.", "I'll need to step up my game to defeat Whiskerclaw."],
+        ["Whiskerclaw is a tough opponent, but I won't give up!", "I may have lost this round, but I'll come back stronger!", "I'll learn from my mistakes and come back stronger!"],
+        ["Whiskerclaw's skills are impressive, but I won't give up!", "I'll train harder to defeat Whiskerclaw next time!", "Even though I lost, I'm determined to win the next round!"],
+        ["This round didn't go as planned, but I'll bounce back!", "I'll strategize and come back stronger in the next round!", "Whiskerclaw got lucky this time, but I won't let that discourage me!"],
+        ["Whiskerclaw's victory won't dampen my spirits! I'll come back stronger!", "I'll analyze my mistakes and improve for the next round!", "Losing this round won't stop me from giving my best in the next one!"]
+      ];
 
 
     let choicesIndex = 0;
@@ -148,6 +130,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const disPlay = document.getElementById('disPlay');
     const compDisplay = document.getElementById('compDisplay');
     const npcPhrase = document.getElementById('npcPhrase');
+    const again = document.getElementById('again');
+    const scene = document.getElementById('scene');
 
     //new
     const menu = document.getElementById('menu');  
@@ -169,8 +153,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const burger = document.getElementById('burger');
     burger.addEventListener('click', function() {
-        console.log(!isPlaying);
         if(isPlaying){
+            scene.classList.add('hidden');
             play.innerHTML = 'Resume';
             burger.innerHTML = 'X';
         } else {
@@ -188,11 +172,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     //CREATE 
-    const myDisplay = document.createElement('div');
-    const pTitle = document.createElement('p');
-    const scores = document.createElement('p');
-    const tryAgainBtn = document.createElement('button');
-    // const inputName = document.createElement('input');
     const rockImg = document.createElement('img');
     const paperImg = document.createElement('img');
     const scissorImg = document.createElement('img');
@@ -214,7 +193,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     //TEXT CONTENT
-    pTitle.textContent = choices[0];
     
     //ATTRIBUTES
     randImg.id = 'blackImg';
@@ -242,7 +220,7 @@ document.addEventListener("DOMContentLoaded", function() {
     npc.style.backgroundImage = 'url("src/img/battlefield.png")';
     npcIMG.src = "src/img/cat/whiskerclaw.png"
     npcIMG.classList.add('w-1/3','h-2/3');
-    npcPhrase.classList.add('bg-gray-100');
+    npcPhrase.classList.add('bg-gray-50');
     
 
     //npc.append
@@ -276,32 +254,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     //EVENT LISTENERS
-    rockBtn.addEventListener('click', handleBtnClick);    
-    paperBtn.addEventListener('click', handleBtnClick);
-    scissorBtn.addEventListener('click', handleBtnClick);
     play.addEventListener('click', startIt);
-    tryAgainBtn.addEventListener('click', newRound);
-    
-    function hideImg(){
-        choiceImg.style.display = 'none';
-        randImg.style.display = 'none';
-    }
-
-    function showImg() {
-        choiceImg.style.display = 'block';
-        randImg.style.display = 'block';
-    }
-    
-    function hideBtn(){
-        rockBtn.style.display = 'none';
-        paperBtn.style.display = 'none';
-        scissorBtn.style.display = 'none';
-    }
-    function showBtn(){
-        rockBtn.style.display = 'block';
-        paperBtn.style.display = 'block';
-        scissorBtn.style.display = 'block';
-    }
+    again.addEventListener('click', startIt);
     
     function handleBtnClick(event) {
         let computerSelection = getComputerChoice();
@@ -311,32 +265,50 @@ document.addEventListener("DOMContentLoaded", function() {
 
         npcChoice.innerHTML = `picks <strong>${computerSelection}</strong>.`;
         userChoice.innerHTML = `picks <strong>${playerSelection}</strong>.`;
-        userID.classList.add("bg-gray-200",'rounded-lg','shadow-sm');
+        userID.classList.add("bg-gray-100",'rounded-full','shadow-sm');
 
-        npcPhrase.classList.add('bg-gray-100');
-        npcID.classList.add('bg-gray-200');
+        npcID.classList.add('bg-gray-50');
 
-        hideBtn();
-        showImg();
+        rockBtn.classList.add('hidden');
+        paperBtn.classList.add('hidden');
+        scissorBtn.classList.add('hidden');
         
         setTimeout(() => {
-            showBtn();
-            hideImg();
+            rockBtn.classList.remove('hidden');
+            paperBtn.classList.remove('hidden');
+            scissorBtn.classList.remove('hidden');
+
             userChoice.innerHTML = '';
-            userID.classList.remove("bg-gray-200",'rounded-lg','shadow-sm');
+            userID.classList.remove("bg-gray-100",'rounded-full','shadow-sm');
             npcChoice.innerHTML = '';
-            npcID.classList.remove('bg-gray-200');
+            npcID.classList.remove('bg-gray-50');
             
         }, 2000)
         playRound(playerSelection,computerSelection);
     }
 
 
-    darkBody();
     function startIt() {
+        rockBtn.addEventListener('click', handleBtnClick);    
+        paperBtn.addEventListener('click', handleBtnClick);
+        scissorBtn.addEventListener('click', handleBtnClick);
+        npcWins = 0;
+        userWins = 0;
         isPlaying = true;
+        main.classList.remove('grayscale');
+        if(scene.classList.contains('hidden')){
+            scene.classList.remove('hidden');
+            scene.classList.add('flex');
+        }
         menu.classList.add("hidden");
         burger.classList.remove("hidden");
+        if(again.classList.contains("hidden")) {
+
+        } else {
+            again.classList.add("hidden");
+            again.classList.remove("flex");
+
+        }
         randomStartingWords();
         if(play.innerHTML === 'Play'){
             compRound = 5;
@@ -364,6 +336,16 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 
+    function DrawPhrases(user,npc) {
+        const userIndex = Math.floor(Math.random() * user.length);
+        const npcIndex = Math.floor(Math.random() * npc.length);
+        
+
+        userPhrase.innerHTML = user[userIndex];
+        npcPhraseText.innerHTML = npc[npcIndex];
+    }
+
+
     function newRound() {
         myRound = 0;
         compRound = 0;
@@ -374,6 +356,19 @@ document.addEventListener("DOMContentLoaded", function() {
         rockBtn.appendChild(rockImg);
         paperBtn.appendChild(paperImg);
         scissorBtn.appendChild(scissorImg);
+    }
+
+    
+    function end() {
+
+        again.classList.remove("hidden");
+        again.classList.add("flex");
+        main.classList.add('grayscale');
+        burger.classList.add('hidden');
+        isPlaying = false;
+        rockBtn.removeEventListener('click', handleBtnClick);    
+        paperBtn.removeEventListener('click', handleBtnClick);
+        scissorBtn.removeEventListener('click', handleBtnClick);
     }
     function letsPlay() {
         let npcLifeLeft = '';
@@ -391,28 +386,22 @@ document.addEventListener("DOMContentLoaded", function() {
         
         addPlayBtn();
         if(myRound === 0 || compRound === 0){
-            if(myRound === 0){
-                play.innerHTML = "Give up?";
-            }
-            if(compRound === 0){
-                play.innerHTML = "Rematch?";
-            }
+            setTimeout(end,2000);
 
-            setTimeout(() =>{
-
-            menu.classList.remove('hidden');
-            },2000)
+            
         }
 
     }
     
 
-    function npcWords(){
-        let roundIndex = npcWins - 1;
-        let npcWords = npcWinning[roundIndex];
-        let userWords = userLosing[roundIndex];
+    function randomWords(winner,npc, user){
+        let roundIndex = winner - 1;
+        let userWords = user[roundIndex];
+        let npcWords = npc[roundIndex];
+
         
-        const wordIndex = Math.floor(Math.random() * npcWords.length);
+        const wordIndex = Math.floor(Math.random() * 3);
+        
         const npcWordSelected = npcWords[wordIndex];
         const userWordSelected = userWords[wordIndex];
 
@@ -422,72 +411,59 @@ document.addEventListener("DOMContentLoaded", function() {
         
         
     }
-    function userWords() {
-        let roundIndex = userWins - 1;
-        let userWords = userWinning[roundIndex];
-        let npcWords = npcLosing[roundIndex];
-
-
-        
-        const wordIndex = Math.floor(Math.random() * userWords.length);
-        const userWordSelected = userWords[wordIndex];
-        const npcWordSelected = npcWords[wordIndex];
-
-        userPhrase.innerHTML = userWordSelected;
-        npcPhraseText.innerHTML = npcWordSelected;
-
-
-    }
+    
 
 
     function playRound(me, comp) {
         myChoice = me;
         compChoice = comp;
         if(myChoice === comp) {
-            let i = 0;
-            return ;
+            DrawPhrases(userDrawPhrase, npcDrawPhrase);
+            return;
 
+        } else {
+            switch(myChoice){
+                case 'rock':
+                    if(compChoice === 'paper') {
+                        myRound--;
+                        npcWins++;
+                        randomWords(npcWins, npcWinning, userLosing);
+                        
+                    } else {
+                        compRound--;
+                        userWins++
+                        randomWords(userWins, npcLosing, userWinning);
+                    }
+                    letsPlay();
+                    break;
+                case 'paper':
+                    if(compChoice === 'scissor') {
+                        myRound--;
+                        npcWins++;
+                        randomWords(npcWins, npcWinning, userLosing);
+                    } else {
+                        compRound--;
+                        userWins++
+                        randomWords(userWins, npcLosing, userWinning);
+                    }
+                    letsPlay();
+                    break;
+                case 'scissor':
+                    if(compChoice === 'rock') {
+                        myRound--;
+                        npcWins++;
+                        randomWords(npcWins, npcWinning, userLosing);
+                    } else {
+                        compRound--;
+                        userWins++
+                        randomWords(userWins, npcLosing, userWinning);
+                    }
+                    letsPlay();
+                    break;
+    
+            }
         }
-        switch(myChoice){
-            case 'rock':
-                if(compChoice === 'paper') {
-                    myRound--;
-                    npcWins++;
-                    npcWords();
-                    
-                } else {
-                    compRound--;
-                    userWins++
-                    userWords();
-                }
-                letsPlay();
-                break;
-            case 'paper':
-                if(compChoice === 'scissor') {
-                    myRound--;
-                    npcWins++;
-                    npcWords();
-                } else {
-                    compRound--;
-                    userWins++
-                    userWords();
-                }
-                letsPlay();
-                break;
-            case 'scissor':
-                if(compChoice === 'rock') {
-                    myRound--;
-                    npcWins++;
-                    npcWords();
-                } else {
-                    compRound--;
-                    userWins++
-                    userWords();
-                }
-                letsPlay();
-                break;
-
-        }
+        
 
     }
 

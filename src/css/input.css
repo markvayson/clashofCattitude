@@ -3,14 +3,21 @@
 @tailwind utilities;
 
 
-
 html, body {
   height: 100%;
   width: 100%;
   box-sizing: border-box;
 }
 
+#logo, .logo {
+  font-family: 'Cherry Bomb One';
+}
 .menu {
   top: 50%;
   left: 50%;
+}
+
+.transition-width {
+  transition: width 0.3s;
+  display: inline-block;
 }
