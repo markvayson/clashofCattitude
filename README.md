@@ -1,6 +1,6 @@
-# Clash of Catitude: Conquer the Feline Foe on the Virtual RPS Battlefield
+# Clash of Cattitude: Conquer the Feline Foe on the Virtual RPS Battlefield
 
-Welcome to Clash of Catitude, a thrilling online game where you can battle against a formidable feline enemy in the classic game of Rock, Paper, Scissors! Harness your strategic prowess and engage in intense virtual battles right from the comfort of your web browser.
+Welcome to Clash of Catittude, a thrilling online game where you can battle against a formidable feline enemy in the classic game of Rock, Paper, Scissors! Harness your strategic prowess and engage in intense virtual battles right from the comfort of your web browser.
 
 ## Features
 - Engage in exciting Rock, Paper, Scissors battles against the cunning and crafty cat adversary.
@@ -11,7 +11,7 @@ Welcome to Clash of Catitude, a thrilling online game where you can battle again
 - Compete against friends or challenge the computer-controlled cat opponent for hours of gaming fun.
 
 ## Getting Started
-2. Open the [game](https://markvayson.github.io/clashOfHands) in your preferred web browser.
+2. Open the [game](https://markvayson.github.io/clashofCattitude) in your preferred web browser.
 3. Select your move (rock, paper, or scissors) by clicking on the corresponding button.
 4. Watch the exciting battle unfold and see if you can defeat the cunning cat.
 5. Keep playing, improve your strategies, and strive for victory!
