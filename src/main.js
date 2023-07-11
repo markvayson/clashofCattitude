@@ -60,7 +60,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const newGame = document.createElement("button");
 
   newGame.textContent = "New Game";
-  newGame.classList.add("text-3xl", "mt-5", "hover:text-4xl", "transition-all");
+  newGame.classList.add(
+    "text-3xl",
+    "mt-5",
+    "hover:text-cyan-500",
+    "hover:text-4xl",
+    "transition-all"
+  );
 
   newGame.addEventListener("click", startIt);
 
