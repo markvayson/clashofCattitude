@@ -19,14 +19,14 @@
   <body class="flex flex-col bg-gray-100">
     <div
       id="header"
-      class="basis-1/12 flex bg-blue-500 drop-shadow-sm justify-center items-center grow-0"
+      class="basis-1/12 flex drop-shadow-sm justify-center items-center grow-0"
     >
-      <div id="logo" class="flex-1 mx-8 text-lg text-gray-50">
+      <div id="logo" class="flex-1 mx-8 text-lg">
         <p>ClashofCattitude</p>
       </div>
       <div
         id="burger"
-        class="hidden font-bold text-3xl text-gray-50 cursor-pointer mx-8"
+        class="hidden font-bold text-3xl text-black cursor-pointer mx-8"
       >
         &#9776;
       </div>
@@ -138,33 +138,37 @@
       </div>
       <div
         id="menu"
-        class="bg-blue-500 transition-opacity duration-500 ease-in-out rounded-lg text-gray-50 flex flex-col shadow-xl xl:w-2/5 md:w-1/2 sm:w-3/4 h-5/6 w-5/6 absolute"
+        class="bg-white transition-opacity duration-500 ease-in-out rounded-lg flex flex-col shadow-xl xl:w-2/5 md:w-1/2 sm:w-3/4 h-5/6 w-5/6 absolute"
       >
         <div
           id="title"
           class="flex-none gap-4 pt-5 flex-col w-full text-5xl text-center justify-center flex items-center"
         >
           <p id="logo" class="">Clash of Cattitude</p>
-          <p class="text-base px-5 logo">
+          <p class="text-base font-bold px-5">
             Conquer the Feline Foe on the Virtual RPS Battlefield
           </p>
         </div>
-        <div id="selection" class="flex-1 logo flex flex-col">
-          <button id="play" class="flex-1 text-5xl"></button>
-          <button id="settings" class="flex-1 text-5xl">settings</button>
-          <button class="flex-1 text-3xl">more games</button>
+        <div
+          id="selection"
+          class="flex-1 font-bold h-1/2 items-center justify-center flex flex-col"
+        >
+          <button
+            id="play"
+            class="text-5xl mb-5 transition-all hover:text-6xl"
+          ></button>
         </div>
       </div>
     </div>
     <div
       id="footer"
-      class="bg-blue-500 bg-red text-gray-50 flex justify-center items-center drop-shadow-sm basis-1/12"
+      class="flex gap-2 justify-center text-center items-center drop-shadow-sm basis-1/12"
     >
-      <p class="text-base">
-        ©2023
-        <a href="https://github.com/markvayson" target="_blank">mark vayson</a>
-        | All Rights Reserved
-      </p>
+      <span> © 2023 |</span>
+      <a href="https://github.com/markvayson"
+        ><span class="pr-1 font-bold">mark vayson</span>
+        <img src="src/img/github.svg" alt="github" class="w-5 h-5 inline" />
+      </a>
     </div>
   </body>
 </html>
